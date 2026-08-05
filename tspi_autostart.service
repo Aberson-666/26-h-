@@ -1,0 +1,18 @@
+[Unit]
+Description=Taishan Pi competition vision auto start
+After=graphical.target
+Wants=graphical.target
+
+[Service]
+Type=simple
+WorkingDirectory=__WORKDIR__
+ExecStart=/usr/bin/python3 __WORKDIR__/detect_new01.py --run --show
+Restart=always
+RestartSec=2
+User=__USER__
+Environment=PYTHONUNBUFFERED=1
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=__HOME__/.Xauthority
+
+[Install]
+WantedBy=graphical.target
